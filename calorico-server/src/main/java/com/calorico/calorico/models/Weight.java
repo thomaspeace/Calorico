@@ -19,7 +19,7 @@ public class Weight {
     @Column(name = "date_weighed")
     private LocalDate dateWeighed;
 
-    @Column(name = "weight_kilograms")
-    private int weightKilograms;
+    @Column(name = "weight_metric")
+    private int weightMetric;
 
 }

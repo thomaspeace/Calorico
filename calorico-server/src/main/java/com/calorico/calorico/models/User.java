@@ -22,7 +22,7 @@ public class User {
     @Column(name = "email")
     private Gender gender;
 
-    @Column(name = "height_centimetres")
-    private int heightCentimetres;
+    @Column(name = "height_metric")
+    private int height_metric;
 
 }
