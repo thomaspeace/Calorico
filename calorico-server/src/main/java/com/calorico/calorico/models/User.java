@@ -16,20 +16,25 @@ public class User {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @Column(name = "email")
+    @Column(name = "gender")
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Column(name = "height_metric")
-    private int height_metric;
+    private double heightMetric;
 
-    public User(String name, LocalDate dateOfBirth, Gender gender, int height_metric) {
+    public User(String name, String email, LocalDate dateOfBirth, Gender gender, double heightMetric) {
         this.name = name;
+        this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.height_metric = height_metric;
+        this.heightMetric = heightMetric;
     }
 
     public User() {
@@ -51,6 +56,14 @@ public class User {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
@@ -67,12 +80,12 @@ public class User {
         this.gender = gender;
     }
 
-    public int getHeight_metric() {
-        return height_metric;
+    public double getHeightMetric() {
+        return heightMetric;
     }
 
-    public void setHeight_metric(int height_metric) {
-        this.height_metric = height_metric;
+    public void setHeightMetric(double heightMetric) {
+        this.heightMetric = heightMetric;
     }
 
 }

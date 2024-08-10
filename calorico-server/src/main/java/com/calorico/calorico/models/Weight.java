@@ -20,8 +20,47 @@ public class Weight {
     private LocalDate dateWeighed;
 
     @Column(name = "weight_metric")
-    private int weightMetric;
+    private double weightMetric;
 
+    public Weight(User user, LocalDate dateWeighed, double weightMetric) {
+        this.user = user;
+        this.dateWeighed = dateWeighed;
+        this.weightMetric = weightMetric;
+    }
 
+    public Weight() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public LocalDate getDateWeighed() {
+        return dateWeighed;
+    }
+
+    public void setDateWeighed(LocalDate dateWeighed) {
+        this.dateWeighed = dateWeighed;
+    }
+
+    public double getWeightMetric() {
+        return weightMetric;
+    }
+
+    public void setWeightMetric(double weightMetric) {
+        this.weightMetric = weightMetric;
+    }
 
 }
