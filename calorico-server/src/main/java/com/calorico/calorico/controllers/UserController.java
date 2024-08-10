@@ -1,6 +1,8 @@
 package com.calorico.calorico.controllers;
 
+import com.calorico.calorico.models.Calorie;
 import com.calorico.calorico.models.User;
+import com.calorico.calorico.models.Weight;
 import com.calorico.calorico.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

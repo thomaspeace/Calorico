@@ -7,6 +7,7 @@ import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,12 +28,18 @@ public class WeightController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<Weight>> getWeightById(Long id) {
+    public ResponseEntity<Optional<Weight>> getWeightById(@PathVariable Long id) {
         Optional<Weight> weight = weightService.getWeightById(id);
         if (weight.isPresent()) {
             return ResponseEntity.ok(weight);
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Weight>> getWeightsByUserId(@PathVariable Long userId) {
+        List<Weight> weights = weightService.getWeightsByUserId(userId);
+        return ResponseEntity.ok(weights);
     }
 }

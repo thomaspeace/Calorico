@@ -1,5 +1,6 @@
 package com.calorico.calorico.services;
 
+import com.calorico.calorico.models.Calorie;
 import com.calorico.calorico.models.Weight;
 import com.calorico.calorico.repositories.WeightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class WeightService {
 
     public Optional<Weight> getWeightById(Long id) {
         return weightRepository.findById(id);
+    }
+
+    public List<Weight> getWeightsByUserId (Long userId) {
+        return weightRepository.findByUserId(userId);
     }
 
 }

@@ -1,8 +1,11 @@
 package com.calorico.calorico.services;
 
 import com.calorico.calorico.models.Calorie;
+import com.calorico.calorico.models.User;
 import com.calorico.calorico.repositories.CalorieRepository;
+import com.calorico.calorico.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,12 +17,18 @@ public class CalorieService {
     @Autowired
     private CalorieRepository calorieRepository;
 
-    public List<Calorie> getAllCalories() {
+    @Autowired
+    private UserService userService;
+
+    public List<Calorie> getAllCalories(){
         return calorieRepository.findAll();
     }
 
-    public Optional<Calorie> getCalorieById(Long id) {
+    public Optional<Calorie> getCalorieById(Long id){
         return calorieRepository.findById(id);
     }
 
+    public List<Calorie> getCaloriesByUserId (Long userId) {
+        return calorieRepository.findByUserId(userId);
+    }
 }
