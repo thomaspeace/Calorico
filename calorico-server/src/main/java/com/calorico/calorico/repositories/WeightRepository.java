@@ -1,4 +1,7 @@
 package com.calorico.calorico.repositories;
 
-public class WeightRepository {
+import com.calorico.calorico.models.Weight;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface WeightRepository extends JpaRepository<Weight, Long> {
 }
