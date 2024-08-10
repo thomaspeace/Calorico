@@ -14,11 +14,11 @@ public class WeightService {
     @Autowired
     private WeightRepository weightRepository;
 
-    private List<Weight> getAllWeights(){
+    private List<Weight> getAllWeights() {
         return weightRepository.findAll();
     }
 
-    private Optional<Weight> getWeightById(Long id){
+    private Optional<Weight> getWeightById(Long id) {
         return weightRepository.findById(id);
     }
 

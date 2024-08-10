@@ -14,11 +14,11 @@ public class CalorieService {
     @Autowired
     private CalorieRepository calorieRepository;
 
-    public List<Calorie> getAllCalories(){
+    public List<Calorie> getAllCalories() {
         return calorieRepository.findAll();
     }
 
-    public Optional<Calorie> getCalorieById(Long id){
+    public Optional<Calorie> getCalorieById(Long id) {
         return calorieRepository.findById(id);
     }
 
