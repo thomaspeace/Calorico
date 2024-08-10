@@ -22,4 +22,6 @@ public class Weight {
     @Column(name = "weight_metric")
     private int weightMetric;
 
+
+
 }

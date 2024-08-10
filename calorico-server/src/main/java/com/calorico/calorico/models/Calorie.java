@@ -22,4 +22,45 @@ public class Calorie {
     @Column(name = "calories_consumed")
     private int caloriesConsumed;
 
+    public Calorie(User user, LocalDate dateConsumed, int caloriesConsumed) {
+        this.user = user;
+        this.dateConsumed = dateConsumed;
+        this.caloriesConsumed = caloriesConsumed;
+    }
+
+    public Calorie() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public LocalDate getDateConsumed() {
+        return dateConsumed;
+    }
+
+    public void setDateConsumed(LocalDate dateConsumed) {
+        this.dateConsumed = dateConsumed;
+    }
+
+    public int getCaloriesConsumed() {
+        return caloriesConsumed;
+    }
+
+    public void setCaloriesConsumed(int caloriesConsumed) {
+        this.caloriesConsumed = caloriesConsumed;
+    }
+
 }
