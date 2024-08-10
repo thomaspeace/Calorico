@@ -2,6 +2,7 @@ package com.calorico.calorico.controllers;
 
 import com.calorico.calorico.models.Calorie;
 import com.calorico.calorico.services.CalorieService;
+import com.calorico.calorico.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,9 @@ public class CalorieController {
 
     @Autowired
     private CalorieService calorieService;
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public ResponseEntity<List<Calorie>> getAllCalories() {
@@ -37,7 +41,11 @@ public class CalorieController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Calorie>> getCaloriesByUserId(@PathVariable Long userId) {
-        List<Calorie> calories = calorieService.getCaloriesByUserId(userId);
-        return ResponseEntity.ok(calories);
+        if (userService.getUserById(userId).isPresent()) {
+            List<Calorie> calories = calorieService.getCaloriesByUserId(userId);
+            return ResponseEntity.ok(calories);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

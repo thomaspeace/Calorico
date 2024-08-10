@@ -2,6 +2,8 @@ package com.calorico.calorico.controllers;
 
 import com.calorico.calorico.models.User;
 import com.calorico.calorico.models.Weight;
+import com.calorico.calorico.services.CalorieService;
+import com.calorico.calorico.services.UserService;
 import com.calorico.calorico.services.WeightService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +23,11 @@ public class WeightController {
     @Autowired
     private WeightService weightService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping
-    public ResponseEntity<List<Weight>> getAllUsers(){
+    public ResponseEntity<List<Weight>> getAllUsers() {
         List<Weight> weights = weightService.getAllWeights();
         return ResponseEntity.ok(weights);
     }
@@ -39,7 +44,11 @@ public class WeightController {
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Weight>> getWeightsByUserId(@PathVariable Long userId) {
-        List<Weight> weights = weightService.getWeightsByUserId(userId);
-        return ResponseEntity.ok(weights);
+        if (userService.getUserById(userId).isPresent()) {
+            List<Weight> weights = weightService.getWeightsByUserId(userId);
+            return ResponseEntity.ok(weights);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
