@@ -1,8 +1,16 @@
-const Home = () => {
+import React from 'react';
 
-    return(
-        <h1>Home page</h1>
-    )
-}
+const Home = ({ users }) => {
+  return (
+    <div>
+      <h1>Users List</h1>
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Home;
