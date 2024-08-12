@@ -1,6 +1,7 @@
 package com.calorico.calorico.services;
 
 import com.calorico.calorico.models.Calorie;
+import com.calorico.calorico.models.CalorieDTO;
 import com.calorico.calorico.models.User;
 import com.calorico.calorico.repositories.CalorieRepository;
 import com.calorico.calorico.repositories.UserRepository;
@@ -30,5 +31,19 @@ public class CalorieService {
 
     public List<Calorie> getCaloriesByUserId (Long userId) {
         return calorieRepository.findByUserId(userId);
+    }
+
+    public Calorie createCalorie(CalorieDTO calorieDTO) {
+        Optional<User> userOptional = userService.getUserById(calorieDTO.getUserId());
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            Calorie newCalorie = new Calorie();
+            newCalorie.setUser(user);
+            newCalorie.setDateConsumed(calorieDTO.getDateConsumed());
+            newCalorie.setCaloriesConsumed(calorieDTO.getCaloriesConsumed());
+            return calorieRepository.save(newCalorie);
+        } else {
+            throw new Error("User not found with ID: " + calorieDTO.getUserId());
+        }
     }
 }

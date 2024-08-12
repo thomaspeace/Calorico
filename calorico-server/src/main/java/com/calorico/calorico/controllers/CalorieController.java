@@ -1,14 +1,13 @@
 package com.calorico.calorico.controllers;
 
 import com.calorico.calorico.models.Calorie;
+import com.calorico.calorico.models.CalorieDTO;
 import com.calorico.calorico.services.CalorieService;
 import com.calorico.calorico.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,4 +47,15 @@ public class CalorieController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @PostMapping
+    public ResponseEntity<Calorie> createCalorie(@RequestBody CalorieDTO calorieDTO) {
+        try {
+            Calorie newCalorie = calorieService.createCalorie(calorieDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newCalorie);
+        } catch (Error e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
 }
