@@ -21,3 +21,28 @@ export const fetchCalories = async () => {
     }
     return response.json();
 };
+
+export const fetchUserById = async (id) => {
+    const response = await fetch(`http://localhost:8080/users/${id}`);
+    if (!response.ok) {
+      throw new Error('Error fetching user');
+    }
+    return response.json();
+  };
+
+export const fetchCaloriesByUserId = async (id) => {
+    const response = await fetch(`http://localhost:8080/calories/user/${id}`);
+    if (!response.ok) {
+      throw new Error('Error fetching user');
+    }
+    return response.json();
+  };
+
+export const fetchWeightsByUserId = async (id) => {
+    const response = await fetch(`http://localhost:8080/weights/user/${id}`);
+    if (!response.ok) {
+      throw new Error('Error fetching user');
+    }
+    return response.json();
+  };
+  
