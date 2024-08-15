@@ -3,6 +3,7 @@ package com.calorico.calorico.services;
 import com.calorico.calorico.models.User;
 import com.calorico.calorico.models.Weight;
 import com.calorico.calorico.models.WeightDTO;
+import com.calorico.calorico.repositories.UserRepository;
 import com.calorico.calorico.repositories.WeightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class WeightService {
     private WeightRepository weightRepository;
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     public List<Weight> getAllWeights() {
         return weightRepository.findAll();
@@ -32,7 +33,7 @@ public class WeightService {
     }
 
     public Weight createWeight(WeightDTO weightDTO) {
-        Optional<User> userOptional = userService.getUserById(weightDTO.getUserId());
+        Optional<User> userOptional = userRepository.findById(weightDTO.getUserId());
         if (userOptional.isPresent()) {
             User user = userOptional.get();
             Weight newWeight = new Weight();

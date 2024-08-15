@@ -8,5 +8,5 @@ import java.util.List;
 public interface WeightRepository extends JpaRepository<Weight, Long> {
 
     List<Weight> findByUserId (long userId);
-
+    Weight findTopByUserIdOrderByDateWeighedDesc(long userId);
 }

@@ -38,4 +38,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("/{id}/bmi")
+    public ResponseEntity<Object> getUserBMI(@PathVariable Long id) {
+        Object bmi = userService.calculateBmi(id);
+        if (bmi == null){
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(bmi);
+        }
+    }
+
 }
