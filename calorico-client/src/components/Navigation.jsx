@@ -1,9 +1,12 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 
 const Navigation = () => {
+
+  const { id } = useParams();
+
     const location = useLocation();
   
     const excludeMenuOnPaths = ['/']; 
@@ -18,9 +21,9 @@ const Navigation = () => {
         <div className="flex-none">
           {!excludeMenuOnPaths.includes(location.pathname) && (
             <ul className="menu menu-horizontal pt-0">
-              <li><a>Stats</a></li>
-              <li><a>Weight</a></li>
-              <li><a>Calories</a></li>
+              <li><Link to={`/users/${id}`}>User</Link></li>
+              <li><Link to={`/weights/${id}`}>Weight</Link></li>
+              <li><Link to={`/calories/${id}`}>Calories</Link></li>
             </ul>
           )}
         </div>

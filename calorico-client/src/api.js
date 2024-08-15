@@ -46,3 +46,10 @@ export const fetchWeightsByUserId = async (id) => {
     return response.json();
   };
   
+export const fetchUserBMI = async (id) => {
+  const response = await fetch(`http://localhost:8080/users/${id}/bmi`);
+  if (!response.ok) {
+    throw new Error('Error fetching users BMI');
+  }
+  return response.json();
+};
