@@ -53,3 +53,35 @@ export const fetchUserBMI = async (id) => {
   }
   return response.json();
 };
+
+export const addCalorieToUser = async (calorieData) => {
+  const response = await fetch(`http://localhost:8080/calories`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(calorieData),
+  });
+
+  if (!response.ok) {
+    throw new Error('Error adding calorie reading');
+  }
+
+  return response.json();
+};
+
+export const addWeightToUser = async (weightData) => {
+  const response = await fetch(`http://localhost:8080/weights`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(weightData),
+  });
+
+  if (!response.ok) {
+    throw new Error('Error adding weight reading');
+  }
+
+  return response.json();
+};
