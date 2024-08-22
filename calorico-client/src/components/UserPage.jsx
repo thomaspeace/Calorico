@@ -2,6 +2,7 @@ import React from 'react';
 import { useQuery, useQueries } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { fetchUserById, fetchUserBMI } from '../api';
+import Navigation from './Navigation';
 
 const UserPage = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const UserPage = () => {
   if (userError || bmiError) return <div>Error: {userFetchError?.message || bmiFetchError?.message}</div>;
 
   return (
-    <div>
+      <div>
       <div>
         <h1>{user.name}</h1>
         <p>Email: {user.email}</p>

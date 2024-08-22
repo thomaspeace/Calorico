@@ -5,7 +5,8 @@ import Home from './components/Home';
 import UserPage from './components/UserPage';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
-
+import CaloriePage from './components/CaloriePage';
+import WeightPage from './components/WeightPage';
 
 
 function App() {
@@ -16,11 +17,13 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Router>
         <div className='grid grid-rows-[auto_1fr_auto] h-screen'>
-          <Navigation></Navigation>
+          <Navigation />
           <main>
             <Routes>
               <Route exact path='/' element={<Home />}/>
               <Route path="/users/:id" element={<UserPage />}/>
+              <Route path="/calories/:id" element={<CaloriePage />}/>
+              <Route path="/weights/:id" element={<WeightPage />}/>
             </Routes>
           </main>
           <Footer></Footer>
