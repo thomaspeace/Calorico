@@ -7,6 +7,8 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import CaloriePage from './components/CaloriePage';
 import WeightPage from './components/WeightPage';
+import CalorieForm from './components/CalorieForm';
+import WeightForm from './components/WeightForm';
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
               <Route path="/users/:id" element={<UserPage />}/>
               <Route path="/calories/:id" element={<CaloriePage />}/>
               <Route path="/weights/:id" element={<WeightPage />}/>
+              <Route path="/calories/:id/add" element={<CalorieForm />}/>
+              <Route path="/weights/:id/add" element={<WeightForm />}/>
             </Routes>
           </main>
           <Footer></Footer>

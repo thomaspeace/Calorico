@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchCaloriesByUserId, fetchWeightsByUserId } from "../api";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
 const CaloriePage = () => {
 
@@ -18,6 +19,7 @@ const CaloriePage = () => {
     
     return (
         <>
+        <Link to={`/calories/${id}/add`}><button className="btn btn-wide">Add Calorie Reading</button></Link>
         <p>This is the Calorie Page</p>
         </>
     )
