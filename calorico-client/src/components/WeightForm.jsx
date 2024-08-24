@@ -43,7 +43,8 @@ const WeightForm = () => {
                 type="number" 
                 value={weightMetric} 
                 onChange={(e) => setWeightMetric(e.target.value)} 
-                placeholder="Weight" 
+                placeholder="Weight"
+                step={0.1} 
                 required 
             />
             <button type="submit" disabled={mutation.isLoading}>
