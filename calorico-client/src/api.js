@@ -30,20 +30,22 @@ export const fetchUserById = async (id) => {
     return response.json();
   };
 
-export const fetchCaloriesByUserId = async (id) => {
+  export const fetchCaloriesByUserId = async (id) => {
     const response = await fetch(`http://localhost:8080/calories/user/${id}`);
     if (!response.ok) {
-      throw new Error('Error fetching user');
-    }
-    return response.json();
+      throw new Error('Error fetching calories data');
+    }  
+    const data = await response.json();
+    return data.sort((a, b) => new Date(b.dateConsumed) - new Date(a.dateConsumed));
   };
-
-export const fetchWeightsByUserId = async (id) => {
+  
+  export const fetchWeightsByUserId = async (id) => {
     const response = await fetch(`http://localhost:8080/weights/user/${id}`);
     if (!response.ok) {
-      throw new Error('Error fetching user');
-    }
-    return response.json();
+      throw new Error('Error fetching weights data');
+    } 
+    const data = await response.json();
+    return data.sort((a, b) => new Date(b.dateWeighed) - new Date(a.dateWeighed));
   };
   
 export const fetchUserBMI = async (id) => {

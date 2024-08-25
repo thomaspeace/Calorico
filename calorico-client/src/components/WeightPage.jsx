@@ -7,20 +7,26 @@ const WeightPage = () => {
 
     const { id } = useParams();
 
-    const { data: user, isLoading: userLoading, isError: userError, error: userFetchError } = useQuery({
-        queryKey: ['user', id],
+    const { data: weights, isLoading: loading, isError: error, error: fetchError } = useQuery({
+        queryKey: ['weights', id],
         queryFn: () => fetchWeightsByUserId(id),
       });
 
     
-    if (userLoading) return <div>Loading...</div>;
+    if (loading) return <div>Loading...</div>;
 
-    if (userError) return <div>Error: {userFetchError?.message}</div>;
+    if (error) return <div>Error: {fetchError?.message}</div>;
     
     return (
         <>
-        <Link to={`/weights/${id}/add`}><button className="btn btn-wide">Add Weight Reading</button></Link>
-        <p>This is the Weight Page</p>
+            <Link to={`/weights/${id}/add`}>
+                <button className="btn btn-wide">Add Weight Reading</button>
+            </Link>
+            <div>
+                {weights.map((weight) => (
+                    <p key={weight.id}>{weight.weightMetric} kg - {weight.dateWeighed}</p>
+                ))}
+            </div>
         </>
     )
 }
