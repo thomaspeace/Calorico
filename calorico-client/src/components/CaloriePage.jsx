@@ -7,20 +7,26 @@ const CaloriePage = () => {
 
     const { id } = useParams();
 
-    const { data: user, isLoading: userLoading, isError: userError, error: userFetchError } = useQuery({
-        queryKey: ['user', id],
+    const { data: calories, isLoading: loading, isError: error, error: fetchError } = useQuery({
+        queryKey: ['calories', id],
         queryFn: () => fetchCaloriesByUserId(id),
       });
 
     
-    if (userLoading) return <div>Loading...</div>;
+    if (loading) return <div>Loading...</div>;
 
-    if (userError) return <div>Error: {userFetchError?.message}</div>;
+    if (error) return <div>Error: {fetchError?.message}</div>;
     
     return (
         <>
-        <Link to={`/calories/${id}/add`}><button className="btn btn-wide">Add Calorie Reading</button></Link>
-        <p>This is the Calorie Page</p>
+            <Link to={`/calories/${id}/add`}>
+                <button className="btn btn-wide">Add Calorie Reading</button>
+            </Link>
+            <div>
+                {calories.map((calorie) => (
+                    <p key={calorie.id}>{calorie.caloriesConsumed} kcal - {calorie.dateConsumed}</p>
+                ))}
+            </div>
         </>
     )
 }
