@@ -1,9 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { addWeightToUser } from "../api";
 
 const WeightForm = () => {
+
+    const navigate = useNavigate();
 
     const { id } = useParams();
         
@@ -13,9 +15,9 @@ const WeightForm = () => {
     const mutation = useMutation({
         mutationFn: addWeightToUser,
         onSuccess: () => {
-            alert('Weight added successfully!');
             setDateWeighed('');
             setWeightMetric('');
+            navigate(`/weights/${id}`)
         },
         onError: (error) => {
             alert(`Error: ${error.message}`);
