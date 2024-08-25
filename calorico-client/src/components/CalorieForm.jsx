@@ -1,11 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 import { addCalorieToUser } from "../api";
 
 const CalorieForm = () => {
 
     const { id } = useParams();
+
+    const navigate = useNavigate();
 
     const [dateConsumed, setDateConsumed] = useState('');
     const [caloriesConsumed, setCaloriesConsumed] = useState('');
@@ -13,9 +15,9 @@ const CalorieForm = () => {
     const mutation = useMutation({
         mutationFn: addCalorieToUser,
         onSuccess: () => {
-            alert('Calorie added successfully!');
             setDateConsumed('');
             setCaloriesConsumed('');
+            navigate(`/calories/${id}`);
         },
         onError: (error) => {
             alert(`Error: ${error.message}`);
