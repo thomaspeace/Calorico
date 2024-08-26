@@ -19,13 +19,19 @@ const CaloriePage = () => {
     
     return (
         <>
-            <Link to={`/calories/${id}/add`}>
-                <button className="btn">Add Calorie Reading</button>
-            </Link>
-            <section className="">
-                <ul>
+            <section className="flex justify-center">
+                <Link to={`/calories/${id}/add`}>
+                    <button className="btn">Add Calorie Reading</button>
+                </Link>
+            </section>
+            <section className="flex justify-center">
+                <ul className="p-4">
                     {calories.map((calorie) => (
-                        <li key={calorie.id}>{calorie.caloriesConsumed} kcal - {calorie.dateConsumed}</li>
+                        <div className="grid grid-cols-3 items-center p-2  rounded-lg ">
+                            <p className="text-center mx-5 px-4">{calorie.dateConsumed}</p>
+                            <p className="text-center mx-5 text-xl px-4" >{calorie.caloriesConsumed} kcal</p>
+                            <button className="btn btn-sm mx-5 ">Edit</button>
+                        </div>
                     ))}
                 </ul>
             </section>
