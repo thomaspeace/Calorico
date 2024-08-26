@@ -20,13 +20,15 @@ const CaloriePage = () => {
     return (
         <>
             <Link to={`/calories/${id}/add`}>
-                <button className="btn btn-wide">Add Calorie Reading</button>
+                <button className="btn">Add Calorie Reading</button>
             </Link>
-            <div>
-                {calories.map((calorie) => (
-                    <p key={calorie.id}>{calorie.caloriesConsumed} kcal - {calorie.dateConsumed}</p>
-                ))}
-            </div>
+            <section className="">
+                <ul>
+                    {calories.map((calorie) => (
+                        <li key={calorie.id}>{calorie.caloriesConsumed} kcal - {calorie.dateConsumed}</li>
+                    ))}
+                </ul>
+            </section>
         </>
     )
 }

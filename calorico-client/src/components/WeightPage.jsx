@@ -19,14 +19,22 @@ const WeightPage = () => {
     
     return (
         <>
-            <Link to={`/weights/${id}/add`}>
-                <button className="btn btn-wide">Add Weight Reading</button>
-            </Link>
-            <div>
-                {weights.map((weight) => (
-                    <p key={weight.id}>{weight.weightMetric} kg - {weight.dateWeighed}</p>
-                ))}
-            </div>
+            <section className="flex justify-center">
+                <Link to={`/weights/${id}/add`}>
+                    <button className="btn ">Add Weight Reading</button>
+                </Link>
+            </section>
+            <section className="flex justify-center">
+                <ul className="p-4">
+                    {weights.map((weight) => (
+                        <div className="grid grid-cols-3 items-center p-2  rounded-lg ">
+                            <p className="text-center mx-5">{weight.dateWeighed}</p>
+                            <p className="text-center mx-5 text-xl" >{weight.weightMetric} kg</p>
+                            <button className="btn btn-sm mx-5">Edit</button>
+                        </div>
+                    ))}
+                </ul>
+            </section>
         </>
     )
 }
