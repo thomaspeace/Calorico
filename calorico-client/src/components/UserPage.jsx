@@ -32,7 +32,7 @@ const UserPage = () => {
         <p>Height: {user.heightMetric} cm</p>
       </div>
       <div>
-        <p>BMI: {bmi}</p>
+        <p>BMI: {Math.round(bmi*10)/10}</p>
       </div>
     </div>
   );
