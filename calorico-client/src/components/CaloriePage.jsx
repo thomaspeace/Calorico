@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchCaloriesByUserId, fetchWeightsByUserId } from "../api";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import CalorieChart from "./CalorieChart";
 
 const CaloriePage = () => {
 
@@ -19,6 +20,7 @@ const CaloriePage = () => {
     
     return (
         <>
+            <CalorieChart calories={calories} />
             <section className="flex justify-center">
                 <Link to={`/calories/${id}/add`}>
                     <button className="btn">Add Calorie Reading</button>
