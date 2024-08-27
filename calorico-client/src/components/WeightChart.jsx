@@ -19,6 +19,8 @@ const WeightChart = ( {weights} ) => {
         lineChartData.labels.push(weights[i].dateWeighed)
         lineChartData.datasets[0].data.push(weights[i].weightMetric)
     }
+    lineChartData.labels.reverse();
+    lineChartData.datasets[0].data.reverse();
 
 
     const options = {}
