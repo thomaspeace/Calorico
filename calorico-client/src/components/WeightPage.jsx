@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchWeightsByUserId } from "../api";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
+import WeightChart from "./WeightChart";
 
 const WeightPage = () => {
 
@@ -19,6 +20,7 @@ const WeightPage = () => {
     
     return (
         <>
+            <WeightChart weights={weights} />
             <section className="flex justify-center">
                 <Link to={`/weights/${id}/add`}>
                     <button className="btn ">Add Weight Reading</button>
