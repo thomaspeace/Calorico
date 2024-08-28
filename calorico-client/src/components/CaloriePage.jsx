@@ -8,15 +8,14 @@ const CaloriePage = () => {
 
     const { id } = useParams();
 
-    const { data: calories, isLoading: loading, isError: error, error: fetchError } = useQuery({
+    const { data: calories, isLoading: caloriesLoading, isError: caloriesError, error: caloriesFetchError } = useQuery({
         queryKey: ['calories', id],
         queryFn: () => fetchCaloriesByUserId(id),
       });
 
-    
-    if (loading) return <div>Loading...</div>;
+    if (caloriesLoading) return <div>Loading...</div>;
 
-    if (error) return <div>Error: {fetchError?.message}</div>;
+    if (caloriesError) return <div>Error: {caloriesFetchError?.message}</div>;
     
     return (
         <>

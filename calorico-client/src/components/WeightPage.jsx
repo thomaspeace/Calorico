@@ -7,6 +7,15 @@ import WeightChart from "./WeightChart";
 const WeightPage = () => {
 
     const { id } = useParams();
+
+    const { data: weights, isLoading: weightsLoading, isError: weightsError, error: weightsFetchError } = useQuery({
+        queryKey: ['weights', id],
+        queryFn: () => fetchWeightsByUserId(id),
+    });
+
+    if (weightsLoading) return <div>Loading...</div>;
+
+    if (weightsError) return <div>Error: {weightsFetchError?.message}</div>;
     
     return (
         <>
