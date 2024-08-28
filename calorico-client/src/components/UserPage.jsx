@@ -12,6 +12,16 @@ const UserPage = () => {
     queryFn: () => fetchUserById(id),
   });
 
+  const { data: weights, isLoading: weightsLoading, isError: weightsError, error: weightsFetchError } = useQuery({
+    queryKey: ['weights', id],
+    queryFn: () => fetchWeightsByUserId(id),
+  });
+
+  const { data: calories, isLoading: caloriesLoading, isError: caloriesError, error: caloriesFetchError } = useQuery({
+    queryKey: ['calories', id],
+    queryFn: () => fetchCaloriesByUserId(id),
+  });
+
   // Fetch BMI data, after user data is successfully fetched
   const { data: bmi, isLoading: bmiLoading, isError: bmiError, error: bmiFetchError } = useQuery({
     queryKey: ['bmi', id],
@@ -20,9 +30,9 @@ const UserPage = () => {
     // we can manually fetch with refetch if we need to
   });
 
-  if (userLoading || bmiLoading) return <div>Loading...</div>;
+  if (userLoading || bmiLoading || weightsLoading || caloriesLoading) return <div>Loading...</div>;
 
-  if (userError || bmiError) return <div>Error: {userFetchError?.message || bmiFetchError?.message}</div>;
+  if (userError || bmiError || weightsError || caloriesError) return <div>Error: {userFetchError?.message || bmiFetchError?.message || weightsFetchError?.message || caloriesFetchError?.message}</div>;
 
   return (
       <div>
