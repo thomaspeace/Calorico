@@ -87,3 +87,11 @@ export const addWeightToUser = async (weightData) => {
 
   return response.json();
 };
+
+export const fetchUserMaintenanceCalories = async (id) => {
+  const response = await fetch(`http://localhost:8080/users/${id}/maintenanceCalories`);
+  if (!response.ok) {
+    throw new Error('Error fetching users maintenance calories');
+  }
+  return response.json();
+};
