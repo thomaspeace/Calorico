@@ -48,4 +48,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("/{id}/maintenanceCalories")
+    public ResponseEntity<Object> getMaintenanceCalories(@PathVariable Long id) {
+        Object maintenanceCalories = userService.calculateMaintenanceCalories(id);
+        if (maintenanceCalories == null){
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(maintenanceCalories);
+        }
+    }
+
 }
