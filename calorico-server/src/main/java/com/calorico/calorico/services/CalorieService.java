@@ -3,6 +3,7 @@ package com.calorico.calorico.services;
 import com.calorico.calorico.models.Calorie;
 import com.calorico.calorico.models.CalorieDTO;
 import com.calorico.calorico.models.User;
+import com.calorico.calorico.models.Weight;
 import com.calorico.calorico.repositories.CalorieRepository;
 import com.calorico.calorico.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

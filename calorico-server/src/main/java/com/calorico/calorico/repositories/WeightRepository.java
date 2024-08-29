@@ -9,4 +9,5 @@ public interface WeightRepository extends JpaRepository<Weight, Long> {
 
     List<Weight> findByUserId (long userId);
     Weight findTopByUserIdOrderByDateWeighedDesc(long userId);
+    List<Weight> findByUserIdOrderByDateWeighedDesc(long userId);
 }
