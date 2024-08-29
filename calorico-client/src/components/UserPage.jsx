@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery, useQueries } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { fetchUserById, fetchUserBMI } from '../api';
+import { fetchUserById, fetchUserBMI, fetchUserMaintenanceCalories } from '../api';
 import Navigation from './Navigation';
 
 const UserPage = () => {
@@ -20,9 +20,15 @@ const UserPage = () => {
     // we can manually fetch with refetch if we need to
   });
 
-  if (userLoading || bmiLoading) return <div>Loading...</div>;
+  const { data: maintenanceCals, isLoading: maintenanceCalsLoading, isError: maintenanceCalsError, error: maintenanceCalsFetchError } = useQuery({
+    queryKey: ['maintenanceCals', id],
+    queryFn: () => fetchUserMaintenanceCalories(id),
+    enabled: !!user,
+  });
 
-  if (userError || bmiError) return <div>Error: {userFetchError?.message || bmiFetchError?.message}</div>;
+  if (userLoading || bmiLoading || maintenanceCalsLoading) return <div>Loading...</div>;
+
+  if (userError || bmiError || maintenanceCalsError) return <div>Error: {userFetchError?.message || bmiFetchError?.message || maintenanceCalsFetchError?.message}</div>;
 
   return (
       <div>
@@ -33,6 +39,9 @@ const UserPage = () => {
       </div>
       <div>
         <p>BMI: {Math.round(bmi*10)/10}</p>
+      </div>
+      <div>
+        <p>Estimated Maintenance Cals: {Math.round(maintenanceCals)}</p>
       </div>
     </div>
   );
