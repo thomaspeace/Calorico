@@ -3,6 +3,7 @@ import { fetchWeightsByUserId } from "../api";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import WeightChart from "./WeightChart";
+import WeightAddModal from "./WeightAddModal";
 
 const WeightPage = () => {
 
@@ -20,11 +21,13 @@ const WeightPage = () => {
     return (
         <>
             <WeightChart weights={weights} />
-            <section className="flex justify-center">
+            {/* <section className="flex justify-center">
                 <Link to={`/weights/${id}/add`}>
                     <button className="btn ">Add Weight Reading</button>
                 </Link>
-            </section>
+            </section> */}
+
+            <WeightAddModal userId={id}/>
             <section className="flex justify-center">
                 <ul className="p-4">
                     {weights.map((weight) => (
