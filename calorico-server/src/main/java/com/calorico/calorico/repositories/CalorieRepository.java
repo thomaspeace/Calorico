@@ -14,4 +14,6 @@ public interface CalorieRepository extends JpaRepository<Calorie, Long> {
     List<Calorie> findByUserId (long userId);
     List<Calorie> findByUserIdOrderByDateConsumedDesc(long userId);
     Calorie findByUserIdAndDateConsumed(long userId, LocalDate date);
+    boolean existsByUserIdAndDateConsumed(Long userId, LocalDate dateConsumed);
+
 }

@@ -37,6 +37,9 @@ public class CalorieService {
     public Calorie createCalorie(CalorieDTO calorieDTO) {
         Optional<User> userOptional = userService.getUserById(calorieDTO.getUserId());
         if (userOptional.isPresent()) {
+            if(calorieRepository.existsByUserIdAndDateConsumed(calorieDTO.getUserId(), calorieDTO.getDateConsumed())) {
+                throw new Error("Calorie reading already exists for " + calorieDTO.getDateConsumed());
+            }
             User user = userOptional.get();
             Calorie newCalorie = new Calorie();
             newCalorie.setUser(user);

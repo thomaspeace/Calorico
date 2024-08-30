@@ -35,6 +35,9 @@ public class WeightService {
     public Weight createWeight(WeightDTO weightDTO) {
         Optional<User> userOptional = userRepository.findById(weightDTO.getUserId());
         if (userOptional.isPresent()) {
+            if(weightRepository.existsByUserIdAndDateWeighed(weightDTO.getUserId(), weightDTO.getDateWeighed())) {
+                throw new Error("Calorie reading already exists for " + weightDTO.getDateWeighed());
+            }
             User user = userOptional.get();
             Weight newWeight = new Weight();
             newWeight.setUser(user);
