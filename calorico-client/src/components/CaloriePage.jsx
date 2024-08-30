@@ -3,6 +3,7 @@ import { fetchCaloriesByUserId, fetchWeightsByUserId } from "../api";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import CalorieChart from "./CalorieChart";
+import CalorieAddModal from "./CalorieAddModal";
 
 const CaloriePage = () => {
 
@@ -20,11 +21,7 @@ const CaloriePage = () => {
     return (
         <>
             <CalorieChart calories={calories} />
-            <section className="flex justify-center">
-                <Link to={`/calories/${id}/add`}>
-                    <button className="btn">Add Calorie Reading</button>
-                </Link>
-            </section>
+            <CalorieAddModal userId={id} />
             <section className="flex justify-center">
                 <ul className="p-4">
                     {calories.map((calorie) => (

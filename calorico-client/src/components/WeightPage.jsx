@@ -21,13 +21,7 @@ const WeightPage = () => {
     return (
         <>
             <WeightChart weights={weights} />
-            {/* <section className="flex justify-center">
-                <Link to={`/weights/${id}/add`}>
-                    <button className="btn ">Add Weight Reading</button>
-                </Link>
-            </section> */}
-
-            <WeightAddModal userId={id}/>
+            <WeightAddModal userId={id} />
             <section className="flex justify-center">
                 <ul className="p-4">
                     {weights.map((weight) => (
