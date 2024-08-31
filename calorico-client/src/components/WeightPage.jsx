@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import WeightChart from "./WeightChart";
 import WeightAddModal from "./WeightAddModal";
+import WeightEditModal from "./WeightEditModal";
 
 const WeightPage = () => {
 
@@ -28,7 +29,7 @@ const WeightPage = () => {
                         <div key={weight.id} className="grid grid-cols-3 items-center p-2  rounded-lg ">
                             <p className="text-center mx-5 px-4">{weight.dateWeighed}</p>
                             <p className="text-center mx-5 text-xl px-4" >{weight.weightMetric} kg</p>
-                            <button className="btn btn-sm mx-5 ">Edit</button>
+                            <WeightEditModal weight={weight}/>
                         </div>
                     ))}
                 </ul>

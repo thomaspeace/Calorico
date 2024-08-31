@@ -98,7 +98,7 @@ export const fetchUserMaintenanceCalories = async (id) => {
 
 export const updateWeight = async (weightId, weightData) => {
   const response = await fetch(`http://localhost:8080/weights/update/${weightId}`, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
@@ -112,7 +112,7 @@ export const updateWeight = async (weightId, weightData) => {
 
 export const updateCalorie = async (calorieId, calorieData) => {
   const response = await fetch(`http://localhost:8080/calories/update/${calorieId}`, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
