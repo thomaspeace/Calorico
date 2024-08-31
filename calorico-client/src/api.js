@@ -95,3 +95,31 @@ export const fetchUserMaintenanceCalories = async (id) => {
   }
   return response.json();
 };
+
+export const updateWeight = async (weightId, weightData) => {
+  const response = await fetch(`http://localhost:8080/weights/update/${weightId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(weightData),
+  });
+  if (!response.ok) {
+    throw new Error('Error updating weight reading');
+  }
+  return response.json();
+};
+
+export const updateCalorie = async (calorieId, calorieData) => {
+  const response = await fetch(`http://localhost:8080/calories/update/${calorieId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(calorieData),
+  });
+  if (!response.ok) {
+    throw new Error('Error updating calorie reading');
+  }
+  return response.json();
+};
