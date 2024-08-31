@@ -54,7 +54,17 @@ public class CalorieController {
             Calorie newCalorie = calorieService.createCalorie(calorieDTO);
             return ResponseEntity.status(HttpStatus.CREATED).body(newCalorie);
         } catch (Error e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
+
+    @PutMapping("/update/{calorieId}")
+    public ResponseEntity<Calorie> updateCalorie(@PathVariable Long calorieId, @RequestBody CalorieDTO calorieDTO) {
+        try {
+            Calorie updatedCalorie = calorieService.updateCalorie(calorieId, calorieDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(updatedCalorie);
+        } catch (Error e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 

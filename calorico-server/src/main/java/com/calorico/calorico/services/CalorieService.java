@@ -50,4 +50,16 @@ public class CalorieService {
             throw new Error("User not found with ID: " + calorieDTO.getUserId());
         }
     }
+
+    public Calorie updateCalorie(Long calorieId, CalorieDTO calorieDTO) {
+        Optional<Calorie> calorieOptional = calorieRepository.findById(calorieId);
+        if (calorieOptional.isPresent()) {
+            Calorie calorieToUpdate = calorieOptional.get();
+            calorieToUpdate.setDateConsumed(calorieDTO.getDateConsumed());
+            calorieToUpdate.setCaloriesConsumed(calorieDTO.getCaloriesConsumed());
+            return calorieRepository.save(calorieToUpdate);
+        } else {
+            throw new Error("Calorie not found with ID: " + calorieDTO);
+        }
+    }
 }
