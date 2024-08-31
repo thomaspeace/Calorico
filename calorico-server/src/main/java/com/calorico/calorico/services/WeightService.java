@@ -1,8 +1,6 @@
 package com.calorico.calorico.services;
 
-import com.calorico.calorico.models.User;
-import com.calorico.calorico.models.Weight;
-import com.calorico.calorico.models.WeightDTO;
+import com.calorico.calorico.models.*;
 import com.calorico.calorico.repositories.UserRepository;
 import com.calorico.calorico.repositories.WeightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +44,18 @@ public class WeightService {
             return weightRepository.save(newWeight);
         } else {
             throw new Error("User not found with ID: " + weightDTO.getUserId());
+        }
+    }
+
+    public Weight updateWeight(Long weightId, WeightDTO weightDTO) {
+        Optional<Weight> weightOptional = weightRepository.findById(weightId);
+        if (weightOptional.isPresent()) {
+            Weight weightToUpdate = weightOptional.get();
+            weightToUpdate.setDateWeighed(weightDTO.getDateWeighed());
+            weightToUpdate.setWeightMetric(weightDTO.getWeightMetric());
+            return weightRepository.save(weightToUpdate);
+        } else {
+            throw new Error("Calorie not found with ID: " + weightId);
         }
     }
 

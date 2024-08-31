@@ -59,7 +59,7 @@ public class CalorieService {
             calorieToUpdate.setCaloriesConsumed(calorieDTO.getCaloriesConsumed());
             return calorieRepository.save(calorieToUpdate);
         } else {
-            throw new Error("Calorie not found with ID: " + calorieDTO);
+            throw new Error("Calorie not found with ID: " + calorieId);
         }
     }
 }

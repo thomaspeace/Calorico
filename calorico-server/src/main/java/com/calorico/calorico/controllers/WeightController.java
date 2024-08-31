@@ -57,4 +57,14 @@ public class WeightController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @PutMapping("/update/{weightId}")
+    public ResponseEntity<Weight> updateWeight(@PathVariable Long weightId, @RequestBody WeightDTO weightDTO) {
+        try {
+            Weight updatedWeight = weightService.updateWeight(weightId, weightDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(updatedWeight);
+        } catch (Error e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 }
