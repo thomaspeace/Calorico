@@ -5,6 +5,7 @@ import com.calorico.calorico.services.UserService;
 import com.calorico.calorico.services.WeightService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -66,5 +67,16 @@ public class WeightController {
         } catch (Error e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/paginated/user/{userId}")
+    public ResponseEntity<Page<Weight>> getPaginatedWeightsByUserId(@PathVariable Long userId, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+
+        if (userService.getUserById(userId).isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // User not found
+        }
+
+        Page<Weight> paginatedWeights = weightService.getPaginatedWeightsByUserId(userId, page, size);
+        return ResponseEntity.ok(paginatedWeights);
     }
 }

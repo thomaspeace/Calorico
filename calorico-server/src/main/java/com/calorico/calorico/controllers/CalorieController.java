@@ -5,6 +5,7 @@ import com.calorico.calorico.models.CalorieDTO;
 import com.calorico.calorico.services.CalorieService;
 import com.calorico.calorico.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -67,5 +68,17 @@ public class CalorieController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/paginated/user/{userId}")
+    public ResponseEntity<Page<Calorie>> getPaginatedCaloriesByUserId(@PathVariable Long userId, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+
+        if (userService.getUserById(userId).isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // User not found
+        }
+
+        Page<Calorie> paginatedCalories = calorieService.getPaginatedCaloriesByUserId(userId, page, size);
+        return ResponseEntity.ok(paginatedCalories);
+    }
+
 
 }

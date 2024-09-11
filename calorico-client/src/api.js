@@ -123,3 +123,24 @@ export const updateCalorie = async (calorieId, calorieData) => {
   }
   return response.json();
 };
+
+const fetchPaginatedCaloriesByUserId = async (userId, page, size) => {
+  const response = await fetch(`/calories/paginated/user/${userId}?page=${page}&size=${size}`);
+  if (!response.ok) {
+      throw new Error('Network response was not ok');
+  }
+  const data = await response.json();
+  console.log('Fetched Data:', data);
+  return data;
+};
+
+
+const fetchPaginatedWeightsByUserId = async (userId, page, size) => {
+  const response = await fetch(`/weights/paginated/user/${userId}?page=${page}&size=${size}`);
+  if (!response.ok) {
+      throw new Error('Network response was not ok');
+  }
+  const data = await response.json();
+  console.log('Fetched Data:', data);
+  return data;
+};

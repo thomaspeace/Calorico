@@ -4,6 +4,9 @@ import com.calorico.calorico.models.*;
 import com.calorico.calorico.repositories.UserRepository;
 import com.calorico.calorico.repositories.WeightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -57,6 +60,11 @@ public class WeightService {
         } else {
             throw new Error("Calorie not found with ID: " + weightId);
         }
+    }
+
+    public Page<Weight> getPaginatedWeightsByUserId(Long userId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return weightRepository.findByUserIdOrderByDateWeighedDesc(userId, pageable);
     }
 
 }

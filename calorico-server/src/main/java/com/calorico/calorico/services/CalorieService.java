@@ -7,6 +7,9 @@ import com.calorico.calorico.models.Weight;
 import com.calorico.calorico.repositories.CalorieRepository;
 import com.calorico.calorico.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -62,4 +65,10 @@ public class CalorieService {
             throw new Error("Calorie not found with ID: " + calorieId);
         }
     }
+
+    public Page<Calorie> getPaginatedCaloriesByUserId(Long userId, int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return calorieRepository.findByUserIdOrderByDateConsumedDesc(userId, pageable);
+    }
+
 }
