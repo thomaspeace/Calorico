@@ -11,7 +11,7 @@ const Navigation = () => {
   const excludeMenuOnPaths = ['/'];
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-200 bg-apple-300">
       <div className="flex-1">
         <Link to="/">
           <span className="btn btn-ghost text-xl">Calorico</span>

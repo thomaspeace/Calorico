@@ -31,11 +31,9 @@ const UserPage = () => {
   if (userError || bmiError || maintenanceCalsError) return <div>Error: {userFetchError?.message || bmiFetchError?.message || maintenanceCalsFetchError?.message}</div>;
 
   return (
+      <div class='flex items-center justify-center pt-8'>
       <div>
-      <div>
-        <h1>{user.name}</h1>
-        <p>Email: {user.email}</p>
-        <p>Height: {user.heightMetric} cm</p>
+        <h1 class='text-5xl'>{user.name}</h1>
       </div>
       <div>
         <p>BMI: {Math.round(bmi*10)/10}</p>

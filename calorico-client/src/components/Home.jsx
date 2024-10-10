@@ -16,15 +16,15 @@ const Home = () => {
 
   return (
     <>
-    <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content text-center">
+    <div className="hero flex-grow">
+        <div className=" text-center h-[calc(100vh-116px)] flex items-center justify-center overflow-auto">
             <div className="max-w-md">
             <h1 className="text-5xl font-bold">Calorico</h1>
             <p className="py-6">
                 Effortlessly track, manage and work towards your goals
             </p>
             <Link to={`/users/1`}>
-                <button className="btn btn-primary">Get Started</button>
+                <button className="btn btn-primary bg-apple-400">Get Started</button>
             </Link>
             </div>
         </div>

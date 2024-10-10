@@ -7,19 +7,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        apple: {
-          '50': '#f1fcf3',
-          '100': '#defae5',
-          '200': '#bef4cd',
-          '300': '#8beaa5',
-          '400': '#51d777',
-          '500': '#2abd54',
-          '600': '#20ac48',
-          '700': '#1a7b36',
-          '800': '#1a612f',
-          '900': '#175029',
-          '950': '#072c13',
+        light: {
+          primary: '#1D4ED8',
+          secondary: '#F59E0B',
+          accent: '#22C55E',
+          background: '#F3F4F6',
+          surface: '#FFFFFF',
+          textPrimary: '#111827',
+          textSecondary: '#6B7280',
+          border: '#D1D5DB',
+          error: '#EF4444',
+          success: '#10B981',
         },
+        dark: {
+          primary: '#3B82F6',
+          secondary: '#FBBF24',
+          accent: '#84CC16',
+          background: '#111827',
+          surface: '#1F2937',
+          textPrimary: '#F9FAFB',
+          textSecondary: '#9CA3AF',
+          border: '#374151',
+          error: '#DC2626',
+          success: '#16A34A',
+        }
       },
     },
   },
