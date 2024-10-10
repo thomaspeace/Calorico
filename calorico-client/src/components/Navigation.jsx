@@ -11,15 +11,15 @@ const Navigation = () => {
   const excludeMenuOnPaths = ['/'];
 
   return (
-    <div className="navbar bg-base-200 bg-apple-300">
+    <div className="navbar bg-base-200 bg-apple-300 h-10">
       <div className="flex-1">
         <Link to="/">
-          <span className="btn btn-ghost text-xl">Calorico</span>
+          <span className="btn btn-ghost text-xl my-0.5">Calorico</span>
         </Link>
       </div>
       <div className="flex-none">
         {!excludeMenuOnPaths.includes(location.pathname) && id && (
-          <ul className="menu menu-horizontal pt-0">
+          <ul className="menu menu-horizontal">
             <li><Link to={`/users/${id}`}>User</Link></li>
             <li><Link to={`/weights/${id}`}>Weight</Link></li>
             <li><Link to={`/calories/${id}`}>Calories</Link></li>
