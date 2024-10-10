@@ -21,7 +21,9 @@ const WeightPage = () => {
     
     return (
         <>
-            <WeightChart weights={weights} />
+            <section className="w-full md:w-1/3 lg:w-1/3 mx-auto">
+                <WeightChart weights={weights} />
+            </section>
             <WeightAddModal userId={id} />
             <section className="flex justify-center">
                 <ul className="p-4">

@@ -21,7 +21,9 @@ const CaloriePage = () => {
     
     return (
         <>
-            <CalorieChart calories={calories} />
+            <section className="w-full md:w-1/2 lg:w-1/3 lg:h-5/5 mx-auto">
+                <CalorieChart calories={calories} />
+            </section>
             <CalorieAddModal userId={id} />
             <section className="flex justify-center">
                 <ul className="p-4">
